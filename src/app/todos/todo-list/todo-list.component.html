@@ -1,0 +1,24 @@
+<app-create-todo (createEvent)="createTodo($event)"></app-create-todo>
+<h2>My To Do List</h2>
+
+<div>
+    @if(!todos || todos.length == 0) {
+        @for (i of todos; track i.id)
+        {
+            <app-todo-item [todo]="i" (deleteEvent)="deleteTodo($event)"></app-todo-item>
+        }
+    }
+    @else {
+        @for (i of todos; track i.id)
+        {
+            <app-todo-item [todo]="i" (deleteEvent)="deleteTodo($event)"></app-todo-item>
+        }
+    }
+</div>
+
+<div>
+    <button class="btn" (click)="clear()">Clear all</button>
+    <button class="btn" (click)="load()">Load</button>
+    <button class="btn" (click)="sortTodosByDeadline()">Sort by Deadline</button>
+    <!-- <button (click)="showPrioritiesOnly()">Show Priorities Only</button> -->
+</div>
